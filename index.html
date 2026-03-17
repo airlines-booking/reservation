@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delta Airlines Flight Reservation | ASAP Trips +1-505-633-1090</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+        }
+
+        body {
+            background-color: #f9f9fc;
+            color: #1a2b3c;
+            line-height: 1.5;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        /* Header & Navigation */
+        .top-bar {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e5e9f0;
+            padding: 16px 0;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+
+        .header-flex {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+            color: #0a2647;
+        }
+        .logo span {
+            color: #c8102e; /* Delta red accent */
+            font-weight: 800;
+        }
+
+        .header-phone {
+            background-color: #c8102e10;
+            padding: 10px 20px;
+            border-radius: 50px;
+            border: 1px solid #c8102e30;
+            font-weight: 600;
+            font-size: 1.5rem;
+        }
+        .header-phone a {
+            color: #c8102e;
+            text-decoration: none;
+        }
+        .header-phone a:hover {
+            text-decoration: underline;
+        }
+
+        /* Buttons */
+        .btn {
+            display: inline-block;
+            background-color: #c8102e;
+            color: white;
+            font-weight: 600;
+            padding: 14px 32px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-size: 1.1rem;
+            border: none;
+            cursor: pointer;
+            transition: background-color 0.2s;
+            box-shadow: 0 4px 8px rgba(200,16,46,0.2);
+        }
+        .btn:hover {
+            background-color: #a00d25;
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            border: 2px solid #c8102e;
+            color: #c8102e;
+            box-shadow: none;
+        }
+        .btn-outline:hover {
+            background-color: #c8102e;
+            color: white;
+        }
+
+        /* Hero */
+        .hero {
+            padding: 48px 0 40px;
+            background: linear-gradient(145deg, #ffffff 0%, #f2f5fa 100%);
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: #0a2647;
+            margin-bottom: 16px;
+        }
+
+        .hero h1 span {
+            color: #c8102e;
+            display: block;
+            font-size: 2rem;
+            margin-top: 8px;
+        }
+
+        .hero-subhead {
+            font-size: 1.4rem;
+            color: #2c3e50;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .hero-text {
+            font-size: 1.1rem;
+            color: #2c3e50;
+            margin-bottom: 24px;
+        }
+
+        .hero-phone {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 24px 0 16px;
+        }
+        .hero-phone a {
+            color: #0a2647;
+            text-decoration: none;
+            border-bottom: 2px dashed #c8102e;
+        }
+
+        .hero-image {
+            background-color: #d9e2ef;
+            border-radius: 32px;
+            padding: 40px 20px;
+            text-align: center;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 200" width="100%" height="100%"><rect width="300" height="200" fill="%23365c8a" rx="16"/><text x="30" y="120" font-family="Arial" font-size="24" fill="white" font-weight="bold">✈️ DELTA</text><text x="30" y="160" font-family="Arial" font-size="16" fill="%23ffffffcc">commercial aircraft</text></svg>');
+            background-size: cover;
+            background-blend-mode: overlay;
+            color: white;
+            min-height: 240px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: bold;
+            box-shadow: 0 20px 30px -10px rgba(0,0,0,0.15);
+        }
+
+        /* Section headings */
+        .section-title {
+            font-size: 2.2rem;
+            font-weight: 700;
+            color: #0a2647;
+            margin-bottom: 16px;
+        }
+        .section-subtitle {
+            font-size: 1.3rem;
+            color: #2c3e50;
+            margin-bottom: 32px;
+            font-weight: 400;
+        }
+
+        /* value props */
+        .value-props {
+            padding: 60px 0;
+            background: white;
+        }
+        .props-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 32px;
+            margin-top: 24px;
+        }
+        .prop-card {
+            background: #f8fafd;
+            padding: 32px 24px;
+            border-radius: 24px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+            transition: transform 0.2s;
+        }
+        .prop-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.05);
+        }
+        .prop-icon {
+            font-size: 2.5rem;
+            margin-bottom: 16px;
+        }
+        .prop-card h3 {
+            font-size: 1.4rem;
+            margin-bottom: 12px;
+        }
+
+        /* Feature grid (two column) */
+        .two-col {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: start;
+        }
+
+        .check-list {
+            list-style: none;
+        }
+        .check-list li {
+            margin-bottom: 16px;
+            padding-left: 32px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="%23c8102e"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41L9 16.17z"/></svg>') left center no-repeat;
+            background-size: 20px;
+        }
+
+        .phone-highlight {
+            background-color: #c8102e10;
+            border-left: 6px solid #c8102e;
+            padding: 24px;
+            border-radius: 20px;
+            margin: 32px 0;
+            font-size: 1.3rem;
+        }
+        .phone-highlight a {
+            color: #c8102e;
+            font-weight: 700;
+            font-size: 1.8rem;
+            text-decoration: none;
+        }
+
+        /* steps */
+        .steps-section {
+            background: white;
+            padding: 60px 0;
+        }
+        .steps-grid {
+            display: grid;
+            grid-template-columns: repeat(5, 1fr);
+            gap: 16px;
+            margin: 40px 0;
+        }
+        .step-item {
+            background: #f0f4fa;
+            padding: 20px 12px;
+            border-radius: 60px 20px 20px 60px;
+            font-weight: 600;
+            text-align: center;
+            border: 1px solid #dbe1ec;
+        }
+
+        /* FAQ */
+        .faq-section {
+            background: #f2f5fa;
+            padding: 60px 0;
+        }
+        .faq-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 32px;
+            margin-top: 32px;
+        }
+        .faq-item {
+            background: white;
+            padding: 24px;
+            border-radius: 20px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.02);
+        }
+        .faq-item h4 {
+            color: #c8102e;
+            margin-bottom: 12px;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        .footer {
+            background: #0a1a2b;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+        .footer-phone {
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 16px 0;
+        }
+        .footer-phone a {
+            color: white;
+            text-decoration: none;
+            border-bottom: 2px solid #c8102e;
+        }
+
+        @media (max-width: 800px) {
+            .hero-grid, .two-col {
+                grid-template-columns: 1fr;
+            }
+            .steps-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .faq-grid {
+                grid-template-columns: 1fr;
+            }
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sticky top bar with phone -->
+    <div class="top-bar">
+        <div class="container header-flex">
+            <div class="logo">ASAP <span>Trips</span></div>
+            <div class="header-phone">
+                <a href="tel:+15056331090">📞 +1-505-633-1090</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero section -->
+    <section class="hero">
+        <div class="container hero-grid">
+            <div>
+                <div class="hero-subhead">Flight Support Helpline!</div>
+                <h1>Delta Airlines Flight Reservation, Changes & Cancellation <span>- Call Now</span></h1>
+                <p class="hero-text">✅ Call- Airlines Helpdesk Number <strong>(Toll Free)</strong></p>
+                <div class="hero-phone">
+                    <a href="tel:+15056331090">📞 +1-505-633-1090</a>
+                </div>
+                <a href="tel:+15056331090" class="btn">📞 Call Toll-Free Now</a>
+                <p style="margin-top: 20px; color: #3a4b5e;">No Hold Time | Instantly Connect with an Airline Expert</p>
+            </div>
+            <div class="hero-image">
+                ✈️ DELTA AIRLINES
+            </div>
+        </div>
+    </section>
+
+    <!-- Why Choose Us (short) -->
+    <section class="value-props">
+        <div class="container">
+            <h2 class="section-title">Why Choose Us?</h2>
+            <div class="props-grid">
+                <div class="prop-card">
+                    <div class="prop-icon">✅</div>
+                    <h3>One-Stop Assistance</h3>
+                    <p>Reservations, flight changes, cancellations, upgrades, and more.</p>
+                </div>
+                <div class="prop-card">
+                    <div class="prop-icon">🕛</div>
+                    <h3>24/7 Availability</h3>
+                    <p>Get help anytime, anywhere.</p>
+                </div>
+                <div class="prop-card">
+                    <div class="prop-icon">👨‍✈️</div>
+                    <h3>Expert Guidance</h3>
+                    <p>Trained professionals ready to solve your queries.</p>
+                </div>
+                <div class="prop-card">
+                    <div class="prop-icon">⚡</div>
+                    <h3>Hassle-Free Process</h3>
+                    <p>Smooth handling of bookings and travel concerns.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main message & phone repeat -->
+    <section style="padding: 20px 0 40px;">
+        <div class="container">
+            <div class="phone-highlight">
+                <strong>📞 Delta Airlines reservations phone number:</strong> <a href="tel:+15056331090">+1-505-633-1090</a><br>
+                <span style="font-size: 1rem;">Call for bookings, changes, cancellations – 24/7 support</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- In-depth why choose / features -->
+    <section style="background: white; padding: 40px 0;">
+        <div class="container two-col">
+            <div>
+                <h2 class="section-title" style="font-size: 2rem;">Why Choose ASAPTrips for Your Delta Airlines Booking?</h2>
+                <ul class="check-list">
+                    <li><strong>Competitive Airfare:</strong> Access exclusive deals and the lowest available fares.</li>
+                    <li><strong>Simple Booking Process:</strong> Book quickly and securely.</li>
+                    <li><strong>Wide Route Network:</strong> Choose from extensive domestic and international options.</li>
+                    <li><strong>Flexible Management:</strong> Easily handle changes, seat selection, baggage, and cancellations.</li>
+                    <li><strong>Dedicated Support:</strong> 24/7 expert help for all your travel needs.</li>
+                </ul>
+            </div>
+            <div>
+                <h2 class="section-title" style="font-size: 2rem;">Find the Best Fares</h2>
+                <p>ASAPTrips guarantees the best prices on Delta Airlines reservations for both domestic and international routes. Compare fares, explore flexible dates, and lock in budget-friendly options—including Delta cheap flights and last-minute deals.</p>
+                <p style="margin-top: 24px;"><strong>✈️ Exclusive Phone-Only Deals</strong> — Call <a href="tel:+15056331090" style="color:#c8102e; font-weight:700;">+1-505-633-1090</a> now for special offers not available online.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Manage booking + insights -->
+    <section style="padding: 60px 0; background: #f9f9fc;">
+        <div class="container">
+            <div class="two-col">
+                <div>
+                    <h3>Manage Your Delta Airlines Reservation Easily</h3>
+                    <p>After booking, manage everything through ASAPTrips. Access the Manage Booking section, enter your confirmation number and last name, and view flight details, seat assignments, and status updates.</p>
+                    <p>Need adjustments? Modify itinerary, add baggage, upgrade seats, or request a Delta change flight.</p>
+                </div>
+                <div>
+                    <h3>Delta Airlines – Key Insights</h3>
+                    <p><strong>Headquartered in Atlanta, GA.</strong> Major hubs: ATL, MSP, DTW, SLC, JFK, LAX, SEA. Popular routes: Atlanta to NYC, Los Angeles, Paris, Chicago, Miami.</p>
+                    <p>✈️ Over 300 destinations worldwide.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Classes of service + baggage -->
+    <section style="padding: 60px 0; background: white;">
+        <div class="container">
+            <h2 class="section-title">Delta Airlines Classes & Amenities</h2>
+            <div class="two-col" style="margin-bottom: 40px;">
+                <div>
+                    <h4>✈️ Economy / Comfort+ / Premium Select / Delta One</h4>
+                    <p><strong>Economy:</strong> Comfortable seating, free entertainment, snacks.<br>
+                    <strong>Delta Comfort+:</strong> Extra legroom, priority boarding.<br>
+                    <strong>Delta Premium Select:</strong> Spacious seats, premium meals (long-haul).<br>
+                    <strong>Delta One:</strong> Fully flat-bed, gourmet dining, Sky Club access.</p>
+                </div>
+                <div>
+                    <h4>In-Flight Amenities</h4>
+                    <ul>
+                        <li>Free movies, TV, music via Fly Delta app</li>
+                        <li>Wi-Fi available on most flights</li>
+                        <li>Power & USB outlets at every seat</li>
+                        <li>Complimentary snacks/drinks; premium meals in higher classes</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="two-col">
+                <div>
+                    <h4>Baggage Policies</h4>
+                    <p><strong>Carry-on:</strong> 1 free (22x14x9 in) + 1 personal item (18x14x8 in).<br>
+                    <strong>Checked:</strong> First bag from $35 (domestic), second $45. Max 50 lbs / 62 in.</p>
+                </div>
+                <div>
+                    <h4>Accessibility & Web Check-In</h4>
+                    <p>Wheelchair assistance, priority boarding, service animals allowed. Web check-in opens 24h before departure.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Steps -->
+    <section class="steps-section">
+        <div class="container">
+            <h2 class="section-title">How to Book Cheap Delta Airlines Tickets</h2>
+            <p style="margin-bottom: 24px;">Want to get Delta Airline Tickets? Contact us today. At ASAPTrips, we offer prices tailored to your travel needs.</p>
+            <div class="steps-grid">
+                <div class="step-item">1️⃣ Contact us / Call</div>
+                <div class="step-item">2️⃣ Enter departure & destination + dates</div>
+                <div class="step-item">3️⃣ Indicate passengers</div>
+                <div class="step-item">4️⃣ Click Search, fill details</div>
+                <div class="step-item">5️⃣ Receive e-ticket</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h2 class="section-title">Frequently Asked Questions (FAQs)</h2>
+            <div class="faq-grid">
+                <div class="faq-item">
+                    <h4>What destinations does Delta fly to?</h4>
+                    <p>Delta serves over 300 destinations including Atlanta, NYC, Los Angeles, Paris, London, Cancun, and many more.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>How many bags can I bring?</h4>
+                    <p>One carry-on (22x14x9 in) + one personal item. Checked bag fees apply; first bag often $35 domestic.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>How do I check in?</h4>
+                    <p>Online check-in via ASAPTrips Manage Booking or Delta website, opens 24 hours before departure.</p>
+                </div>
+                <div class="faq-item">
+                    <h4>Are tickets cheaper at the airport?</h4>
+                    <p>No, booking online through ASAPTrips gives you access to exclusive deals and discounts not available at the airport.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section style="padding: 60px 0; background: white; text-align: center;">
+        <div class="container">
+            <h2 style="font-size: 2.5rem; margin-bottom: 16px;">Book Your Delta Flight Over Call Now</h2>
+            <div style="font-size: 3rem; font-weight: 800; margin: 24px 0;">
+                <a href="tel:+15056331090" style="color:#c8102e; text-decoration: none;">+1-505-633-1090</a>
+            </div>
+            <a href="tel:+15056331090" class="btn" style="font-size: 1.6rem; padding: 18px 48px;">📞 Call Toll-Free Now</a>
+            <p style="margin-top: 24px;">No Hold Time | 24/7 Expert Support</p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="logo" style="color: white; margin-bottom: 16px;">ASAP <span style="color:#ff6b7b;">Trips</span></div>
+            <div class="footer-phone">
+                <a href="tel:+15056331090">📞 +1-505-633-1090</a>
+            </div>
+            <p style="color: #aab9ce; margin-top: 24px;">© 2025 ASAP Trips - Delta Airlines Flight Reservation. All rights reserved.</p>
+            <p style="color: #6c7a92;">*Toll-free call. Available 24/7 for reservations, changes, and cancellations.</p>
+        </div>
+    </footer>
+</body>
+</html>
